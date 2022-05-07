@@ -10,6 +10,7 @@ export default function NewCharacter() {
     const [characterData, setCharacterData] = useState([]);
     const [classesData, setClassesData] = useState([]);
     const [raceData, setRaceData] = useState([])
+    const [alignmentData, setAlignmentData] = useState([]);
     // const [activeCat, setActiveCat] = useState('')
     // const categoriesRef = useRef([])
     // useEffect(function() {
@@ -40,17 +41,26 @@ export default function NewCharacter() {
         }
         getClassesData();
 
-        async function getRaces() {
+        async function getRacesData() {
             const race = await dungeonsAPI.getRaces();
             let raceArray = [];
             raceArray = await race.results;
             setRaceData(raceArray);
         }
-        getRaces()
+        getRacesData()
+
+        async function getAlignmentsData() {
+            const alignment = await dungeonsAPI.getAlignments();
+            let alignmentArray = [];
+            alignmentArray = await alignment.results;
+            setAlignmentData(alignmentArray);
+        }
+        getAlignmentsData()
     }, []);
 
     let classNames = classesData.map((el, idx) => <option value="{el.name}" key={idx}>{el.name}</option>);
-    let raceNames  = raceData.map((el, idx) => <option value="{el.name}" key={idx}>{el.name}</option>);
+    let raceNames = raceData.map((el, idx) => <option value="{el.name}" key={idx}>{el.name}</option>);
+    let alignmentNames = alignmentData.map((el, idx) => <option value="{el.name}" key={idx}>{el.name}</option>);
     //const classData = classesData.map(({classData}) =>
 
     //console.log(classesData.results.size)
@@ -65,6 +75,8 @@ export default function NewCharacter() {
                 <label>Background: </label>
                 <label>Race: </label>
                 <select>{raceNames}</select>
+                <label>Alignment:</label>
+                <select>{alignmentNames}</select>
                 <br></br>
                 <input type="submit" value="Submit"/>
                 

@@ -37,6 +37,10 @@ export function getRaces() {
     return sendRequest(`${BASE_URL}/races`);
 }
 
+export function getAlignments() {
+    return sendRequest(`${BASE_URL}/alignments`);
+}
+
 export function getLevels(index) {
     return sendRequest(`${BASE_URL}/classes/${index}/levels`);
 }
