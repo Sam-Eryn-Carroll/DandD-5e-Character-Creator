@@ -13,7 +13,7 @@ export function checkToken() {
     return sendRequest(`${BASE_URL}/check-token`);
 }
 
-s
+
 
 async function sendRequest(url, method = 'GET', payload = null) {
     const options = { method };

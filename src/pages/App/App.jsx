@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
 import AuthPage from '../AuthPage/AuthPage';
-import NewOrderPage from '../NewOrderPage/NewOrderPage';
-import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
 import NavBar from '../../components/NavBar/NavBar';
+import NewCharacter from '../NewCharacter/NewCharacter';
+import CharacterDetail from '../CharacterDetail/CharacterDetail';
+import CharactersList from '../CharactersList/CharactersList';
 import './App.css';
 
 export default function App() {
@@ -15,8 +16,9 @@ export default function App() {
       <>
           <NavBar user={user} setUser={setUser}/>
           <Routes>
-            <Route path="/orders/new" element={<NewOrderPage />} />
-            <Route path="/orders" element={<OrderHistoryPage />} />
+            <Route path="/characters/new" element={<NewCharacter />} />
+            <Route path="/characters/detail" element={<CharacterDetail />} />
+            <Route path="/characters" element={<CharactersList />} />
           </Routes>
       </>
           :
