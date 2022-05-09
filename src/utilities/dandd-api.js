@@ -41,6 +41,10 @@ export function getAlignments() {
     return sendRequest(`${BASE_URL}/alignments`);
 }
 
+export function getLanguages() {
+    return sendRequest(`${BASE_URL}/languages`);
+}
+
 export function getLevels(index) {
     return sendRequest(`${BASE_URL}/classes/${index}/levels`);
 }

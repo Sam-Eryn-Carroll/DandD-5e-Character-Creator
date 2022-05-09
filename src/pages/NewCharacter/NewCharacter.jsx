@@ -1,30 +1,20 @@
 import * as dungeonsAPI from '../../utilities/dandd-api';
 import { useEffect, useState } from 'react';
+import RaceSection from '../../components/RaceSection/RaceSection';
+import ClassList from '../../components/ClassList/ClassList';
+import LevelSection from '../../components/LevelSection/LevelSection';
+import AblityScoreSection from '../../components/AblityScoreSection/AbilityScoreSection';
+import CharacterDescription from '../../components/CharacterDescription/CharacterDescripton';
+import EquipmentSection from '../../components/EquipmentSection/EquipmentSection';
 
 export default function NewCharacter() {
-    // const [classes, setClasses] = useState('')
-    // async function addClass(index) {
-    //     const newClass = await dungeonsAPI.chooseClass(index);
-    //     setClasses(newClass)
-    // }
     const [characterData, setCharacterData] = useState([]);
     const [classesData, setClassesData] = useState([]);
-    const [raceData, setRaceData] = useState([])
+    const [activeClass, setActiveClass] = useState('');
+    const [raceData, setRaceData] = useState([]);
     const [alignmentData, setAlignmentData] = useState([]);
-    // const [activeCat, setActiveCat] = useState('')
-    // const categoriesRef = useRef([])
-    // useEffect(function() {
-    //     async function getData() {
-    //         const data = await dungeonsAPI.getAll();
-    //         categoriesRef.current = data.reduce((cats, data) => {
-    //             const cat = data.category.name;
-    //             return cats.includes(cat) ? cats : [...cats, cat]
-    //         }, []);
-    //         setActiveCat(categoriesRef.current[1]);
-    //         setCharacterData(data)
-    //     }
-    //     getData()
-    // }, [])
+    const [languageData, setLanguageData] = useState([]);
+
     useEffect(function() {
         async function getData() {
             const data = await dungeonsAPI.getAll();
@@ -56,21 +46,28 @@ export default function NewCharacter() {
             setAlignmentData(alignmentArray);
         }
         getAlignmentsData()
+
+        async function getLanguagesData() {
+            const language = await dungeonsAPI.getLanguages();
+            let languageArray = [];
+            languageArray = await language.results;
+            setLanguageData(languageArray);
+        }
+        getLanguagesData();
+
     }, []);
 
-    let classNames = classesData.map((el, idx) => <option value="{el.name}" key={idx}>{el.name}</option>);
+    let classNames = classesData.map((el, idx) => <li value="{el.name}" key={idx}>{el.name}</li>);
     let raceNames = raceData.map((el, idx) => <option value="{el.name}" key={idx}>{el.name}</option>);
     let alignmentNames = alignmentData.map((el, idx) => <option value="{el.name}" key={idx}>{el.name}</option>);
-    //const classData = classesData.map(({classData}) =>
-
-    //console.log(classesData.results.size)
+    let languageNames = languageData.map((el, idx) => <option value="{el.name}" key={idx}>{el.name}</option>);
+    
     return (
         <main>
             <form>
                 <label>Name: </label>
                 <input type="text"></input>
-                <label>Class: </label>
-                <select>{classNames}</select>
+                <ClassList classNames={classNames}/>
                 <label>Level: </label>
                 <label>Background: </label>
                 <label>Race: </label>
