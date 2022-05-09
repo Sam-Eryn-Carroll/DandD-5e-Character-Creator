@@ -29,6 +29,10 @@ export function getClasses() {
     return sendRequest(`${BASE_URL}/classes`);
 }
 
+export function getAbilityScores() {
+    return sendRequest(`${BASE_URL}/ability-scores`);
+}
+
 export function getBackgrounds() {
     return sendRequest(`${BASE_URL}/backgrounds`);
 }
@@ -37,12 +41,20 @@ export function getRaces() {
     return sendRequest(`${BASE_URL}/races`);
 }
 
+export function specificRace(index) {
+    return sendRequest(`${BASE_URL}/races/${index}`)
+}
+
 export function getAlignments() {
     return sendRequest(`${BASE_URL}/alignments`);
 }
 
 export function getLanguages() {
     return sendRequest(`${BASE_URL}/languages`);
+}
+
+export function getEquipment() {
+    return sendRequest(`${BASE_URL}/equipment`)
 }
 
 export function getLevels(index) {

@@ -1,24 +1,26 @@
-.RaceSection {
+.AbilityScoreSection {
     color: var(--text-light);
     list-style: none;
-    padding: 0 0 0 0;
+    padding: 0rem 0 0 0;
+    position: absolute;
+    left: 20rem;
     font-size: 1.7vw;
   }
   
-.RaceSection li {
+.AbilityScoreSection li {
     padding: .6vmin;
     text-align: center;
     border-radius: .5vmin;
     margin-bottom: .5vmin;
   }
       
-.RaceSection li:hover:not(.active) {
+.AbilityScoreSection li:hover:not(.active) {
     cursor: pointer;
     background-color: green;
     color: black;
   }
   
-.RaceSection li.active {
+.AbilityScoreSection li.active {
     color: var(--text-dark);
     background-color: black;
     border: .1vmin solid black;

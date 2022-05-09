@@ -1,7 +1,7 @@
 .ClassList {
     color: var(--text-light);
     list-style: none;
-    padding: 0;
+    padding: 0 0 0 0;
     font-size: 1.7vw;
   }
   
@@ -15,11 +15,13 @@
 .ClassList li:hover:not(.active) {
     cursor: pointer;
     background-color: green;
-    color: black;
+    color: white;
   }
   
 .ClassList li.active {
     color: var(--text-dark);
-    background-color: black;
-    border: .1vmin solid black;
+    background-color: green;
+    border: .1vmin solid green;
   }
+
+  

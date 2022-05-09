@@ -1,0 +1,32 @@
+.NewCharacter {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    background-color: var(--white);
+    border-radius: 2vmin;
+  }
+  
+.NewCharacter aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3vmin 2vmin;
+  }
+
+.NewCharacter #AbilitySection {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 16.2vmin 0vmin;
+} 
+
+.NewCharacter #CharacterDescription {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0vmin 0vmin;
+}

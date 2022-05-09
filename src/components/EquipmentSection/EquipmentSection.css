@@ -1,0 +1,25 @@
+.EquipmentSection {
+    color: var(--text-light);
+    list-style: none;
+    padding: 0rem 0 0 0;
+    font-size: 1vw;
+  }
+  
+.EquipmentSection li {
+    padding: .6vmin;
+    text-align: center;
+    border-radius: .5vmin;
+    margin-bottom: .5vmin;
+  }
+      
+.EquipmentSection li:hover:not(.active) {
+    cursor: pointer;
+    background-color: green;
+    color: black;
+  }
+  
+.EquipmentSection li.active {
+    color: var(--text-dark);
+    background-color: black;
+    border: .1vmin solid black;
+  }
