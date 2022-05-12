@@ -11,12 +11,17 @@ import EquipmentSection from '../../components/EquipmentSection/EquipmentSection
 export default function NewCharacter() {
     const [classes, setClasses] = useState([]);
     const [races, setRaces] = useState([]);
-    const [name, setName] = useState([])
+    const [proficiencies, setProficiencies] = useState([]);
+    const [traits, setTraits] = useState([]);
+    const [languages, setLanguages] = useState([])
     const [newCharacterData, setNewCharacterData] = useState({
         name: '',
         charClass: '',
         race: '',
-        level: 0
+        level: 0,
+        proficiencies: [],
+        traits: '',
+        languages: ''
     });
     
     useEffect(function() {
@@ -29,31 +34,54 @@ export default function NewCharacter() {
 
         async function getRacesData() {
             const races = await dungeonsAPI.getRaces();
+            console.log(races)
             setRaces(races.results);
         }
         getRacesData()
         
-    }, []);
+        async function specificRaceData(index) {
+            const specificRace = await dungeonsAPI.specificRace(index);
+            if (specificRace.starting_proficiency_options, specificRace.language_options) {
+                console.log(specificRace)
+                setProficiencies(specificRace.starting_proficiency_options.from);
+                setLanguages(specificRace.language_options.from);
+            }
+        //     setTraits(specificRace.traits);
+                
+        }
+        specificRaceData(newCharacterData.race)
+        
+    }, [newCharacterData.race,]);
    
     function handleChange(propToChange, value) {
-        console.log(propToChange, value)
+        //console.log(propToChange, value)
         setNewCharacterData({
             ...newCharacterData, 
             [propToChange]: value
         })
     }
+    function handleMultiChange(evt) {
+        let value = evt.target.value;
+        let name = evt.target.name;
+
+        setNewCharacterData({
+            ...newCharacterData,
+            [name]: value
+            
+        })
+    }
+    function handleNameChange(evt) {
+        setNewCharacterData({
+            ...newCharacterData,
+            [evt.target.name]: evt.target.value
+        })
+    }
     return (
         <main className='NewCharacter'>
             <aside>
-                <ClassList classes={classes} handleChange={handleChange}/>
-                <RaceSection races={races} handleChange={handleChange} />
+                <ClassList classes={classes} handleChange={handleChange} newCharacterData={newCharacterData} handleNameChange={handleNameChange}/>
+                <RaceSection races={races} handleChange={handleChange} proficiencies={proficiencies} handleMultiChange={handleMultiChange} languages={languages} />
             </aside>
-            <section id="AbilitySection">
-                
-            </section>
-            <section id="CharacterDescription">
-                
-            </section>
             <section>
                 
             </section>
