@@ -27,7 +27,6 @@ export default function NewCharacter() {
     });
     
     useEffect(function() {
-
         async function getClassesData() {
             const classes = await dungeonsAPI.getClasses();
             setClasses(classes.results);
@@ -39,60 +38,33 @@ export default function NewCharacter() {
             setRaces(races.results);
         }
         getRacesData()
-        
+
         async function specificRaceData(index) {
-        
             const specificRace = await dungeonsAPI.specificRace(index);
-            console.log(specificRace.starting_proficiency_options && specificRace.language_options)
-            if (specificRace.starting_proficiency_options) {
-                console.log('fireing')
+            if (specificRace.starting_proficiency_options && specificRace.starting_proficiency_options.from.length + 1 > 0) {
                 function getRaceProficiencies() {
                     setProficienciesChoice(specificRace.starting_proficiency_options.choose)
                     setProficiencies(specificRace.starting_proficiency_options.from);
-                    // setNewCharacterData({
-                    //     ...newCharacterData,
-                    //     proficiencies: []
-                    // })
+                    console.log(specificRace.starting_proficiency_options.from)
                 }
                 getRaceProficiencies()
             }
             if (specificRace.language_options) {
                 function getRaceLanguages() {
-                    // setNewCharacterData({
-                    //     ...newCharacterData,
-                    //     languages: []
-                    // })
                     setLanguageChoice(specificRace.language_options.choose)
                     setLanguages(specificRace.language_options.from);
                 }
                 getRaceLanguages()
-            }
-            if (specificRace.traits) {
-                function getRaceTraits() {
-                    // setTraits(specificRace.traits)
-                    console.log('fireing')
-                    // setNewCharacterData({
-                    //     ...newCharacterData,
-                    //     traits: specificRace.traits
-                    // })
-                 }
-                 getRaceTraits()
-            }
+            } 
             setNewCharacterData({
                 ...newCharacterData,
+                specificRace: races,
                 traits: specificRace.traits,
                 proficiencies: [],
                 languages: []
             })
-                
-
-                
-
-                
-               
         }
-        specificRaceData(newCharacterData.race)
-        
+        specificRaceData(newCharacterData.race)  
     }, [newCharacterData.race]);
    
     function handleChange(propToChange, value) {

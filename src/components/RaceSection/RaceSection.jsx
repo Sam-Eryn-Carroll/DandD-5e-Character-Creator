@@ -26,14 +26,14 @@ export default function RaceSection({races, handleChange, proficiencies, languag
         return <li key={raceEl.index} onClick={() => handleChange('race', raceEl.index)}>{raceEl.name}</li>
     })
     const proficienciesUI = proficiencies.map(proficiencyEl => {
-        return <li key={proficiencyEl.index} onClick={() => handleProficiencyClick(proficiencyEl.name)}>{proficiencyEl.name}</li>
+         return <li key={proficiencyEl.index} onClick={() => handleProficiencyClick(proficiencyEl.name)}>{proficiencyEl.name}</li>
     })
     const languagesUI = languages.map(languageEl => {
         return <li key={languageEl.index} onClick={() => handleLanguageClick(languageEl.name)}>{languageEl.name}</li>
     })
     
     const traitsUI = traits.map(traitEl => {
-        return <li key={traitEl.index} >{traitEl.name}</li>
+        return <li key={traitEl.index}>{traitEl.name}</li>
     })
     
 
