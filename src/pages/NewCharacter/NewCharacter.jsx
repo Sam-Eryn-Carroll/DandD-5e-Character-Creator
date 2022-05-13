@@ -12,16 +12,18 @@ export default function NewCharacter() {
     const [classes, setClasses] = useState([]);
     const [races, setRaces] = useState([]);
     const [proficiencies, setProficiencies] = useState([]);
+    const [proficienciesChoice, setProficienciesChoice] = useState([])
     const [traits, setTraits] = useState([]);
     const [languages, setLanguages] = useState([])
+    const [languageChoice, setLanguageChoice] = useState([])
     const [newCharacterData, setNewCharacterData] = useState({
         name: '',
         charClass: '',
         race: '',
         level: 0,
         proficiencies: [],
-        traits: '',
-        languages: ''
+        traits: [],
+        languages: []
     });
     
     useEffect(function() {
@@ -34,24 +36,64 @@ export default function NewCharacter() {
 
         async function getRacesData() {
             const races = await dungeonsAPI.getRaces();
-            console.log(races)
             setRaces(races.results);
         }
         getRacesData()
         
         async function specificRaceData(index) {
+        
             const specificRace = await dungeonsAPI.specificRace(index);
-            if (specificRace.starting_proficiency_options, specificRace.language_options) {
-                console.log(specificRace)
-                setProficiencies(specificRace.starting_proficiency_options.from);
-                setLanguages(specificRace.language_options.from);
+            console.log(specificRace.starting_proficiency_options && specificRace.language_options)
+            if (specificRace.starting_proficiency_options) {
+                console.log('fireing')
+                function getRaceProficiencies() {
+                    setProficienciesChoice(specificRace.starting_proficiency_options.choose)
+                    setProficiencies(specificRace.starting_proficiency_options.from);
+                    // setNewCharacterData({
+                    //     ...newCharacterData,
+                    //     proficiencies: []
+                    // })
+                }
+                getRaceProficiencies()
             }
-        //     setTraits(specificRace.traits);
+            if (specificRace.language_options) {
+                function getRaceLanguages() {
+                    // setNewCharacterData({
+                    //     ...newCharacterData,
+                    //     languages: []
+                    // })
+                    setLanguageChoice(specificRace.language_options.choose)
+                    setLanguages(specificRace.language_options.from);
+                }
+                getRaceLanguages()
+            }
+            if (specificRace.traits) {
+                function getRaceTraits() {
+                    // setTraits(specificRace.traits)
+                    console.log('fireing')
+                    // setNewCharacterData({
+                    //     ...newCharacterData,
+                    //     traits: specificRace.traits
+                    // })
+                 }
+                 getRaceTraits()
+            }
+            setNewCharacterData({
+                ...newCharacterData,
+                traits: specificRace.traits,
+                proficiencies: [],
+                languages: []
+            })
                 
+
+                
+
+                
+               
         }
         specificRaceData(newCharacterData.race)
         
-    }, [newCharacterData.race,]);
+    }, [newCharacterData.race]);
    
     function handleChange(propToChange, value) {
         //console.log(propToChange, value)
@@ -60,14 +102,10 @@ export default function NewCharacter() {
             [propToChange]: value
         })
     }
-    function handleMultiChange(evt) {
-        let value = evt.target.value;
-        let name = evt.target.name;
-
+    function handleMultiChange(propToChange, value) {
         setNewCharacterData({
             ...newCharacterData,
-            [name]: value
-            
+            [propToChange]: value
         })
     }
     function handleNameChange(evt) {
@@ -76,11 +114,12 @@ export default function NewCharacter() {
             [evt.target.name]: evt.target.value
         })
     }
+    
     return (
         <main className='NewCharacter'>
             <aside>
                 <ClassList classes={classes} handleChange={handleChange} newCharacterData={newCharacterData} handleNameChange={handleNameChange}/>
-                <RaceSection races={races} handleChange={handleChange} proficiencies={proficiencies} handleMultiChange={handleMultiChange} languages={languages} />
+                <RaceSection races={races} handleChange={handleChange} proficiencies={proficiencies} handleMultiChange={handleMultiChange} languages={languages} languageChoice={languageChoice} proficienciesChoice={proficienciesChoice} traits={traits} handleNameChange={handleNameChange} newCharacterData={newCharacterData}/>
             </aside>
             <section>
                 
