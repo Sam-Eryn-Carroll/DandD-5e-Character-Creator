@@ -1,5 +1,10 @@
 .ClassList {
-    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3vmin 2vmin;
+    color: silver;
     list-style: none;
     padding: 0 0 0 0;
     font-size: 1.7vw;
@@ -15,7 +20,7 @@
 .ClassList li:hover:not(.active) {
     cursor: pointer;
     background-color: green;
-    color: white;
+    color: black;
   }
   
 .ClassList li.active {

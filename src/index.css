@@ -20,7 +20,8 @@ body {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--tan-4);
+  background-color: silver;
+  color: rgb(69, 2, 2);
   padding: 2vmin;
   height: 100vh;
 }
@@ -79,8 +80,8 @@ code {
 
 .form-container {
   padding: 3vmin;
-  background-color: var(--tan-1);
-  border: .1vmin solid var(--tan-3);
+  background-color: rgb(69, 2, 2);
+  border: silver;
   border-radius: 1vmin;
 }
 
@@ -100,6 +101,7 @@ label {
   font-size: 2vmin;
   display: flex;
   align-items: center;
+  color: rgb(69, 2, 2);
 }
 
 input {
@@ -107,7 +109,8 @@ input {
   font-size: 2vmin;
   border: .1vmin solid var(--tan-3);
   border-radius: .5vmin;
-  color: var(--text-dark);
+  color: silver;
+  background: rgb(69, 2, 2);
   background-image: none !important; /* prevent lastpass */
   outline: none;
 }
@@ -119,13 +122,13 @@ input:focus {
 button, a.button {
   margin: 1vmin;
   padding: 1vmin;
-  color: var(--white);
-  background-color: var(--orange);
+  color: rgb(69, 2, 2);
+  background-color: silver;
   font-size: 2vmin;
   font-weight: bold;
   text-decoration: none;
   text-align: center;
-  border: .1vmin solid var(--tan-2);
+  border: .1vmin solid silver;
   border-radius: .5vmin;
   outline: none;
   cursor: pointer;
@@ -143,7 +146,7 @@ button.btn-xs {
 
 button:disabled, form:invalid button[type="submit"] {
   cursor: not-allowed;
-  background-color: var(--tan-4);
+  background-color: silver;
 }
 
 button[type="submit"] {

@@ -1,9 +1,9 @@
 .NewCharacter {
     height: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1.6fr 3.5fr 1.6fr;
     grid-template-rows: 1fr;
-    background-color: var(--white);
+    background-color: rgb(69, 2, 2);
     border-radius: 2vmin;
   }
   
@@ -15,18 +15,15 @@
     margin: 3vmin 2vmin;
   }
 
-.NewCharacter #AbilitySection {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    margin: 16.2vmin 0vmin;
-} 
-
-.NewCharacter #CharacterDescription {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0vmin 0vmin;
+section {
+  background-color: silver;
+    border: .1vmin solid rgb(69, 2, 2);
+    border-radius: 2vmin;
+    margin: 3vmin 0;
+    padding: 1vmin;
+    color: rgb(69, 2, 2);
+    list-style: none;
+    font-size: 1.6vw;
+    overflow-y: scroll;
 }
+

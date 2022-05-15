@@ -1,0 +1,53 @@
+.RaceDetails {
+    
+}
+
+.RaceDetails h5 {
+    text-align: center;
+    font-size: 1.6vw;
+}
+
+.RaceDetails .RaceProficiencies {
+    display: grid;
+    grid-template-columns: .5fr .5fr .5fr;
+    grid-template-rows: 1fr;
+    text-align: center;
+}
+
+.RaceDetails .RaceLanguages {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.RaceDetails .RaceTraits {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.RaceDetails li.RaceTraitsList {
+    cursor: default !important;
+    background-color: silver !important; 
+    color: rgb(69, 2, 2)!important;
+  }
+
+.RaceDetails li {
+    list-style: none;
+    padding: .6vmin;
+    text-align: center;
+    border-radius: .5vmin;
+    margin-bottom: .5vmin;
+}
+      
+.RaceDetails li:hover:not(.active) {
+    cursor: pointer;
+    background-color: green;
+    color: black;
+  }
+  
+.RaceDetails li.active {
+    color: var(--text-dark);
+    background-color: black;
+    border: .1vmin solid black;
+  }
