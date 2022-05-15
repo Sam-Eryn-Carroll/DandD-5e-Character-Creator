@@ -1,3 +1,7 @@
 .BasicInfo {
     text-align: center;
   }
+
+.BasicInfo label {
+  color: rgb(69, 2, 2);
+}
