@@ -1,4 +1,19 @@
-nav {
-    color: rgb(69, 2, 2);
+.Navbar nav {
+    list-style-type: none;
+  margin: 0 0 15px 0;
+  padding: 0px;
+  overflow: hidden;
+  background-color: rgb(69, 2, 2);
 }
 
+.Navbar li {
+    float: left;
+}
+
+.Navbar li .NavLink {
+    display: block;
+  color: silver;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}

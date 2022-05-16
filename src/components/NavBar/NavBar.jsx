@@ -8,15 +8,14 @@ export default function NavBar({ user, setUser }) {
         setUser(null);
     }
     return (
-        <nav>
-            <Link to="/characters">Character List</Link>
-            &nbsp; | &nbsp;
-            <Link to="/characters/new">New Character</Link>
-            &nbsp; | &nbsp;
-            <span>Welcome, {user.name}</span>
-            &nbsp; | &nbsp;
-            <Link to="" onClick={handleLogOut}>Log Out</Link>
-        </nav>
+        <main className='Navbar'>
+            <nav>
+                <li><Link className='NavLink' to="/characters">Character List</Link></li>
+                <li><Link className='NavLink' to="/characters/new">New Character</Link></li>
+                <li><span className='NavLink'>Welcome, {user.name}</span></li>
+                <li><Link className='NavLink' to="" onClick={handleLogOut}>Log Out</Link></li>
+            </nav>
+        </main>
     )
 }
 
