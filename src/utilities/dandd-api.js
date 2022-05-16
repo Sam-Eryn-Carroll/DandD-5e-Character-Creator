@@ -52,10 +52,3 @@ export function getLanguages() {
     return sendRequest(`${BASE_URL}/languages`);
 }
 
-export function getEquipment() {
-    return sendRequest(`${BASE_URL}/equipment`)
-}
-
-export function getLevels(index) {
-    return sendRequest(`${BASE_URL}/classes/${index}/levels`);
-}
